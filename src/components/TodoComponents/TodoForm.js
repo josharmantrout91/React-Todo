@@ -13,6 +13,9 @@ function TodoForm(props) {
         <button type="submit">
             Add ToDo
         </button>
+        <button>
+            Clear Completed
+        </button>
     </form>
  );   
 }
