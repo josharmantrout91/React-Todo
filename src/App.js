@@ -1,5 +1,7 @@
 import React from 'react';
 
+import TodoList from './components/TodoComponents/TodoList';
+import TodoForm from './components/TodoComponents/TodoForm';
 
 const todoData = [
   { todoName: 'Fork and Clone' },
@@ -10,19 +12,37 @@ const todoData = [
 
 
 class App extends React.Component {
-  // you will need a place to store your state in this component.
   constructor() {
     super();
     this.state = {
-      todoList: todoData
+      todoList: todoData,
+      todoName: ''
     };
   }
-  // design `App` to be the parent component of your application.
-  // this component is going to take care of state, and any change handlers you need to work with your state
+
+  handleChanges = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  addNewTodo = e => {
+    e.preventDefault();
+    this.setState({
+      todoList: [
+        ...this.state.todoList, { todoName: this.state.todoName }
+      ],
+      todoName: ''
+    });
+  };
+  
   render() {
     return (
       <div className ="App">
-        
+        <TodoList todoDataList={this.state.todoList} />
+        <TodoForm 
+          addNewTodo={this.addNewTodo}
+          handleChanges={this.handleChanges}
+          todoName={this.state.todoName}
+        />
       </div>
     );
   }
