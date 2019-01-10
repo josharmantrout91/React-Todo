@@ -8,7 +8,7 @@ const todoData = [
   { todoName: 'Fork and Clone' },
   { todoName: 'Set up Branch' },
   { todoName: 'React Wizardry' },
-  { todoName: 'Gaze at the Beauty of my Creation'}
+  { todoName: 'Abracadabra! Here\'s Your To-Do List!'}
 ];
 
 
