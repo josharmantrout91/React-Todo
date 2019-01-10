@@ -4,20 +4,25 @@ import './App.css';
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 
-const todoData = [
-  { todoName: 'Fork and Clone' },
-  { todoName: 'Set up Branch' },
-  { todoName: 'React Wizardry' },
-  { todoName: 'Abracadabra! Here\'s Your To-Do List!'}
+const todos = [
+  {
+    task: 'Start Here',
+    id: 0,
+    completed: false
+  },
+  {
+    task: 'First Task',
+    id: 1,
+    completed: false
+  }
 ];
 
-
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      todoList: todoData,
-      todoName: ''
+      todos: todos,
+      newTask: '',
     };
   }
 
@@ -28,21 +33,52 @@ class App extends React.Component {
   addNewTodo = e => {
     e.preventDefault();
     this.setState({
-      todoList: [
-        ...this.state.todoList, { todoName: this.state.todoName }
+      todos: [
+        ...this.state.todos, 
+        { task: this.state.newTask, 
+          id: Date.now(), 
+          completed: false }
       ],
-      todoName: ''
+      newTask: ''
     });
   };
+
+  toggleCompleted = id => {
+    // set state
+    // look through task list and find the task I clicked on
+    // toggle the completed status for that task
+    this.setState ({ todoList: this.state.todos.map(todo => {
+      console.log('click worked');
+      if (todo.id === id) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        };
+      }
+      return todo;
+    }) 
+  });
+  };
+
+  clearCompleted = e => {
+    e.preventDefault();
+    this.setState({
+      todos: this.state.todos.filter(todo => !todo.completed)
+    });
+  }
   
   render() {
     return (
       <div className ="App">
-        <TodoList todoDataList={this.state.todoList} />
+        <TodoList 
+        toggleCompleted = {this.toggleCompleted}
+        todos={this.state.todos} 
+        />
         <TodoForm 
           addNewTodo={this.addNewTodo}
           handleChanges={this.handleChanges}
-          todoName={this.state.todoName}
+          clearCompleted={this.clearCompleted}
+          newTask={this.state.newTask}
         />
       </div>
     );

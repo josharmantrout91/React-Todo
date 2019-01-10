@@ -5,16 +5,16 @@ function TodoForm(props) {
     <form className="todo-form" onSubmit= {props.addNewTodo} >
         <input
         className= "todo-form-input"
-        value={props.todoName}
+        value={props.newTask}
         type= "text"
-        name= "todoName"
+        name= "newTask"
         placeholder= "Task"
         onChange= {props.handleChanges}
         />
         <button type="submit">
             Add ToDo
         </button>
-        <button>
+        <button onClick={props.clearCompleted}>
             Clear Completed
         </button>
     </form>
