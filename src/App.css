@@ -1,0 +1,15 @@
+.App {
+    font-size: 1.8rem;
+    line-height: 1.5;
+    border: 2px solid black;
+    padding: 20px;
+    background-color: #A0001F;
+    color: white;
+}
+
+form {
+    margin-right: 10px;
+}
+button {
+    margin: 0 5px;
+}

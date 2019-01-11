@@ -1,0 +1,16 @@
+.todo-form {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 15px;
+}
+.todo-form-input {
+    margin-right: 5px;
+    height: 20px;
+    border-radius: 5px;
+}
+button {
+    border-radius: 5px;
+}
+.completed {
+    text-decoration: line-through;
+}
