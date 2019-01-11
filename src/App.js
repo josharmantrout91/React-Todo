@@ -47,17 +47,16 @@ class App extends React.Component {
     // set state
     // look through task list and find the task I clicked on
     // toggle the completed status for that task
-    this.setState ({ todoList: this.state.todos.map(todo => {
-      console.log('click worked');
-      if (todo.id === id) {
-        return {
-          ...todo,
-          completed: !todo.completed
+    this.setState({
+      todos: this.state.todos.map(todo => {
+        if (todo.id === id) {
+          return {
+            ...todo, completed: !todo.completed
+          } 
         };
-      }
-      return todo;
-    }) 
-  });
+        return todo;
+      } )
+    });
   };
 
   clearCompleted = e => {
