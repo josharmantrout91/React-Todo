@@ -6,7 +6,6 @@ function Todo(props) {
 
     return <div
         className= {props.todo.completed ? 'completed' : null}
-        style={{ textDecoration: todo.completed ? 'line-through' : '' }}
         onClick={e => toggleCompleted(todo.id)}
     >
     {props.todo.task}
